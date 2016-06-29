@@ -1,0 +1,284 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="my-icons.html">
+
+
+<!-- Google Font-->
+<link href='https://fonts.googleapis.com/css?family=Quicksand:400,300|Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Poppins:300,500' rel='stylesheet' type='text/css'>
+
+<!-- My web components-->
+<link rel="import" href="jumbo-screen.html">
+<link rel="import" href="healthcare-3D">
+<link rel="import" href="icon-panel1">
+<link rel="import" href="vr-headset">
+<link rel="import" href="icon-panel2">
+<link rel="import" href="team-panel">
+<link rel="import" href="my-form">
+
+
+
+<dom-module id="my-app">
+
+    <style include="iron-flex"></style>
+
+    <template>
+
+        <style>
+            :host {
+                display: block;
+                --app-primary-color: #4285f4;
+                --app-secondary-color: black;
+            }
+            
+            app-header {
+                background-color: white;
+                color: #333333;
+            }
+            
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: #333333;
+            }
+            
+          
+            .drawer-list {
+                margin: 0 20px;
+            }
+            
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                line-height: 40px;
+                text-decoration: none;
+                color: var(--app-secondary-color);
+            }
+            
+            .drawer-list a.iron-selected {
+                color: black;
+                font-weight: bold;
+            }
+            
+            .drawer-list a.subroute {
+                padding-left: 32px;
+            }
+            
+            .jumbo {
+                height: 100vh;
+                background-color: deepskyblue;
+            }
+            
+            .box_1,
+            .box_2,
+            .box_3,
+            .box_4,
+            .box_5{
+                @apply(--layout-vertical);
+                @apply(--layout-center);
+                @apply(--layout-center-justified);
+                text-align: center;
+            }
+            
+            .box_1,
+            .box_2,
+            .box_3,
+            .box_4,
+            .box_5{
+                width: 100%;
+                height: 600px;
+                float: left;
+            }
+        
+            
+            .box_1 {
+                position: relative;
+                background-color:aliceblue;
+                z-index: 1;
+                box-shadow: 0px 1px 2px 3px rgba(0,0,0,0.10);
+                        
+            }
+            
+            .box_2 {
+                
+                position: relative;
+                background-color:lightgrey;
+                z-index: 2;
+                box-shadow: -2px 4px 8px 4px  rgba(0,0,0,0.25);
+            }
+            
+            .box_3 {
+                
+                position: relative;
+                background-color:lightgoldenrodyellow;
+                z-index: 3;
+                box-shadow: 2px 6px 14px 4px rgba(0,0,0,0.25);
+                        
+            }
+            
+            .box_4 {
+                
+                position: relative;
+                background-color: lightcyan; 
+                z-index: 1;
+                box-shadow: 1px -2px 6px 2px rgba(0,0,0,0.25);
+                
+            }
+            
+            .box_5 {
+                
+                position: relative;
+                background-color: white; 
+                z-index: 0;
+                box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,0.05);
+                
+            }
+           
+            @media (min-width:640px) {
+                app-drawer,
+                paper-icon-button {
+                    display: none;
+                }
+                app-toolbar {
+                    padding-left: 50px;
+                    padding-right: 50px;
+                }
+            }
+            @media (max-width:640px) {
+                paper-tabs {
+                    display: none;
+                }
+            }
+            
+            @media (min-width:768px) {
+                .box_1,
+                .box_2,
+                .box_3,
+                .box_4{
+                    width: 50%;
+                }
+                .box_1,
+                .box_2,
+                .box_3,
+                .box_4{
+                    height: 800px;
+                }
+            }
+
+        </style>
+
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+        <app-drawer-layout fullbleed>
+
+            <!-- Drawer content -->
+            <app-drawer>
+                <app-toolbar>Menu</app-toolbar>
+                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <a name="view1" href="/view1">View One</a>
+                    <a name="view2" href="/view2">View Two</a>
+                    <a name="view3" href="/view3">View Three</a>
+                    <a name="new-view" href="/new-view">New View</a>
+                </iron-selector>
+            </app-drawer>
+
+            <!-- Main content -->
+            <app-header-layout has-scrolling-region>
+
+                <app-header condenses reveals effects="waterfall">
+                    <app-toolbar>
+                        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+                        <div title>
+                            <img src="../images/justtext2_250px.png" alt="BehaVR logo" width="100px">
+
+                        </div>
+
+                        <paper-tabs selected="0">
+                            <paper-tab>ITEM ONE</paper-tab>
+                            <paper-tab>ITEM TWO</paper-tab>
+                            <paper-tab>ITEM THREE</paper-tab>
+                        </paper-tabs>
+
+                    </app-toolbar>
+                </app-header>
+            
+                <div class="jumbo"></div>
+                
+                <div class="container">
+                
+                <div class="box_1"></div>
+                
+                <div class="box_2"></div>
+              
+                <div class="box_3"></div>
+                        
+                <div class="box_4"></div>
+                   
+                <div class="box_5"></div>
+              
+                <div class="box_3"></div>
+                
+                <div class="box_2"></div>
+                
+                        </div>
+            
+            </app-header-layout>
+
+        </app-drawer-layout>
+
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'my-app',
+
+            properties: {
+
+                page: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_pageChanged'
+                },
+
+            },
+
+            observers: [
+        '_routePageChanged(routeData.page)'
+      ],
+
+            _routePageChanged: function (page) {
+                this.page = page || 'view1';
+            },
+
+            _pageChanged: function (page) {
+                // load page import on demand.
+                this.importHref(
+                    this.resolveUrl('my-' + page + '.html'), null, null, true);
+            }
+
+        });
+    </script>
+
+</dom-module>

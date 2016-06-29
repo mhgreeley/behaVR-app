@@ -1,0 +1,133 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+
+<!-- Google Font-->
+<link href='https://fonts.googleapis.com/css?family=Poppins:300,500|Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
+
+
+
+
+<dom-module id="my-form">
+
+    <style>
+    :host {
+            --paper-input-container-color: #999;
+            --paper-input-container-focus-color: white;
+            --paper-input-container-input-color: white;
+            --paper-input-container-label: #999;
+            --paper-input-container-label-focus: #999;
+            --paper-input-container-label-floating: white;
+            --paper-input-container-input: white;
+            --paper-input-container-underline: #999;
+            --paper-input-container-underline-focus: white;
+            --paper-input-container-input: {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 300;
+            }
+            --paper-input-container-label: {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 300;
+            }
+            --paper-input-container-label-floating: {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+            }
+        }
+        
+        
+        paper-input,
+        paper-textarea{
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        form > paper-button {
+            width: 65%;
+            margin-top: 20px;
+            background-color: rgba(225, 225, 225, .75);
+        }
+        
+        #toast0 {
+            width: 100%;
+            margin-bottom: 150px;
+        }
+    
+        
+        p {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+
+            
+        }
+        
+        img {
+            height: 35px;
+            width: 35px;
+            padding-top: 15px;
+        }
+        
+        
+        @media (min-width:768px) {
+                
+                #toast0 {
+                    max-width: 50%;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                }
+        }
+    </style>
+
+    <template>
+             <form is="iron-form" method="get" action="/" id="basic">
+                <paper-input name="FirstName" label="First Name" type="text"></paper-input>
+                <paper-input name="LastName" label="Last Name" type="text"></paper-input>
+                <paper-input name="Email" label="Email" type="email"></paper-input>
+                <paper-input name="Phone" label="Phone Number" type="phone"></paper-input>
+                <paper-textarea value="" label="Tell us about yourself" input textarea></paper-textarea>
+                <br>
+                <paper-button raised onclick="_submit(event)">Submit</paper-button>
+                
+                <paper-toast id="toast0" text="Thank you for submitting your contact information."></paper-toast>
+            </form>
+            
+            
+            <script>
+                function _submit(event) {
+                    Polymer.dom(event).localTarget.parentElement.submit();
+                    var form = Polymer.dom(event).localTarget.parentElement
+                    form.reset();
+                    form.querySelector('#toast0').open();
+                };
+            </script>
+      
+        
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'my-form',
+
+            behaviors: [
+      Polymer.IronFormElementBehavior,
+      Polymer.IronValidatableBehavior
+    ]
+
+        });
+    </script>
+
+</dom-module>

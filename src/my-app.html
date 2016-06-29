@@ -19,122 +19,333 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="my-icons.html">
+
+<!-- My web components-->
+<link rel="import" href="jumbo-screen.html">
+<link rel="import" href="healthcare-3D.html">
+<link rel="import" href="icon-block1.html">
+<link rel="import" href="icon-block2.html">
+<link rel="import" href="vr-photo.html">
+<link rel="import" href="team-block.html">
+<link rel="import" href="form-intro.html">
+<link rel="import" href="my-form.html">
+
 
 <dom-module id="my-app">
 
-  <template>
+    <style include="iron-flex"></style>
 
-    <style>
+    <template>
 
-      :host {
-        display: block;
-        --app-primary-color: #4285f4;
-        --app-secondary-color: black;
-      }
+        <style>
+            :host {
+                display: block;
+                --app-primary-color: #4285f4;
+                --app-secondary-color: black;
+            }
+            
+            app-header {
+                background-color: white;
+                color: #333333;
+            }
+            
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: #333333;
+            }
+            
+            .drawer-list {
+                margin: 0 20px;
+            }
+            
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                line-height: 40px;
+                text-decoration: none;
+                color: var(--app-secondary-color);
+            }
+            
+            .drawer-list a.iron-selected {
+                color: black;
+                font-weight: bold;
+            }
+            
+            .drawer-list a.subroute {
+                padding-left: 32px;
+            }
+            
+            .jumbo {
+                height: 100vh;
+                background-color: deepskyblue;
+            }
+            
+            .box_1,
+            .box_2,
+            .box_3,
+            .box_4,
+            .box_5,
+            .box_6,
+            .footer {
+                @apply(--layout-vertical);
+                @apply(--layout-center);
+                @apply(--layout-center-justified);
+                text-align: center;
+            }
+            
+            .box_1,
+            .box_2,
+            .box_3,
+            .box_4
+            {
+                width: 100%;
+                height: 600px;
+                float: left;
+                overflow: scroll;
+            }
+            
+        
+            .box_6,
+            .box_7 {
+                width: 100%;
+                float: left;
+                overflow: scroll;
+            }
+            
+            .box_5 {
+                width: 100%;
+                height: 600px;
+                float: left;
+                position: relative;
+                background-color: white;
+                z-index: 0
+            }
+            
+            .box_1 {
+                position: relative;
+                background-color: white;
+                z-index: 3;
+                box-shadow: 3px 0 15px 3px rgba(0, 0, 0, 0.5);
+            }
+            
+            .box_2 {
+                position: relative;
+                background-color: #55A041;
+                z-index: 1;
+                box-shadow: 3px 0 15px 3px rgba(0, 0, 0, 0.5);
+            }
+            
+            .box_3 {
+                position: relative;
+                background-color: #1A9FE8;
+                z-index: 1;
+                box-shadow: 3px 0 15px 3px rgba(0, 0, 0, 0.5);
+            }
+            
+            .box_4 {
+                position: relative;
+                background-image: url(../images/vr_headset.001.jpeg);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                z-index: 2;
+                box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.5);
+            }
+            
+            .box_6 {
+                position: relative;
+                background-color: #222;
+                padding-top: 25px;
+                z-index: 2;
+                box-shadow: 3px 0 15px 3px rgba(0, 0, 0, 0.75);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            
+            .box_7 {
+                position: relative;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                z-index: 1;
+                box-shadow: 3px 0 15px 3px rgba(0, 0, 0, 0.5);
+            }
+            
+            .footer {
+                width: 100%;
+                background-image: url(../images/clouds.png);
+                background-size: cover;
+                height: 125px;
+            }
+            
+            @media (min-width:640px) {
+                app-drawer,
+                paper-icon-button {
+                    display: none;
+                }
+                app-toolbar {
+                    padding-left: 50px;
+                    padding-right: 50px;
+                }
+            }
+            
+            @media (max-width:640px) {
+                paper-tabs {
+                    display: none;
+                }
+            }
+            
+            @media (min-width:768px) {
+                .box_1,
+                .box_2,
+                .box_3,
+                .box_4 {
+                    width: 50%;
+                }
+                
+                .box_1,
+                .box_2,
+                .box_3,
+                .box_4 {
+                    height: 800px;
+                }
+            }
+            
+            @media (min-width:880px) {
+                .box_6,
+                .box_7{
+                    width: 50%;
+                }
+                
+            
+                form-intro {
+                    max-height: 768px;
 
-      app-header {
-        background-color: var(--app-primary-color);
-        color: #fff;
-      }
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
-      }
+                }
+                
+                .box_6 {
+                    height: 743px;
+                }
+            }
+        </style>
 
-      .drawer-list {
-        margin: 0 20px;
-      }
-      .drawer-list a {
-        display: block;
-        padding: 0 16px;
-        line-height: 40px;
-        text-decoration: none;
-        color: var(--app-secondary-color);
-      }
-      .drawer-list a.iron-selected {
-        color: black;
-        font-weight: bold;
-      }
-      .drawer-list a.subroute {
-        padding-left: 32px;
-      }
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+        <app-drawer-layout fullbleed>
+
+            <!-- Drawer content -->
+            <app-drawer>
+                <app-toolbar>Menu</app-toolbar>
+                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <a name="what_we_do" href="#what_we_do">WHAT WE DO</a>
+                    <a name="who_we_are" href="#who_we_are">WHO WE ARE</a>
+                    <a name="contact_us" href="#contact_us">CONTACT US</a>
+                </iron-selector>
+            </app-drawer>
+
+            <!-- Main content -->
+            <app-header-layout has-scrolling-region>
+
+                <app-header condenses reveals effects="waterfall">
+                    <app-toolbar>
+                        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+                        <div title>
+                            <img src="../images/justtext2_250px.png" alt="BehaVR logo" width="100px">
+
+                        </div>
+
+                        <paper-tabs selected="0">
+                            <paper-tab>WHAT WE DO</paper-tab>
+                            <paper-tab>WHO WE ARE</paper-tab>
+                            <paper-tab>CONTACT US</paper-tab>
+                        </paper-tabs>
+
+                    </app-toolbar>
+                </app-header>
+
+                <div class="jumbo">
+                    <jumbo-screen></jumbo-screen>
+                </div>
 
 
-    </style>
+          
 
-    <app-location route="{{route}}"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        tail="{{subroute}}"></app-route>
+                    <div class="box_1" id="what_we_do">
+                        <healthcare-3D></healthcare-3D>
+                    </div>
 
-    <app-drawer-layout fullbleed>
+                    <div class="box_2">
+                        <icon-block1></icon-block1>
+                    </div>
 
-      <!-- Drawer content -->
-      <app-drawer>
-        <app-toolbar>Menu</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">View Two</a>
-          <a name="view3" href="/view3">View Three</a>
-        </iron-selector>
-      </app-drawer>
+                    <div class="box_3">
+                        <icon-block2></icon-block2>
+                    </div>
 
-      <!-- Main content -->
-      <app-header-layout has-scrolling-region>
+                    <div class="box_4">
+                        <vr-photo></vr-photo>
+                    </div>
 
-        <app-header condenses reveals effects="waterfall">
-          <app-toolbar>
-            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div title>My App</div>
-          </app-toolbar>
-        </app-header>
+                    <div class="box_5">
+                        <team-block></team-block>
 
-        <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
-        </iron-pages>
+                    </div>
 
-      </app-header-layout>
+                    <div class="box_6">
+                        <form-intro>
+                            <my-form></my-form>
+                        </form-intro>
 
-    </app-drawer-layout>
+                    </div>
 
-  </template>
+                    <div class="box_7">
+                        <content></content>
+                    </div>
+                    
+                    <div class="footer"> <p>Copyright 2016 BehaVR</p></div>
+            
 
-  <script>
+            </app-header-layout>
 
-    Polymer({
+        </app-drawer-layout>
 
-      is: 'my-app',
+    </template>
 
-      properties: {
+    <script>
+        Polymer({
 
-        page: {
-          type: String,
-          reflectToAttribute: true,
-          observer: '_pageChanged'
-        },
+            is: 'my-app',
 
-      },
+            properties: {
 
-      observers: [
+                page: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_pageChanged'
+                },
+
+            },
+
+            observers: [
         '_routePageChanged(routeData.page)'
       ],
 
-      _routePageChanged: function(page) {
-        this.page = page || 'view1';
-      },
+            _routePageChanged: function (page) {
+                this.page = page || 'view1';
+            },
 
-      _pageChanged: function(page) {
-        // load page import on demand.
-        this.importHref(
-          this.resolveUrl('my-' + page + '.html'), null, null, true);
-      }
+            _pageChanged: function (page) {
+                // load page import on demand.
+                this.importHref(
+                    this.resolveUrl('my-' + page + '.html'), null, null, true);
+            }
 
-    });
-
-  </script>
+        });
+    </script>
 
 </dom-module>

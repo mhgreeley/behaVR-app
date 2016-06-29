@@ -1,0 +1,174 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="shared-styles">
+
+  <template>
+
+    <style>
+            app-header {
+                background-color: white;
+                color: #333333;
+            }
+            
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: #333333;
+            }
+            
+            .drawer-list {
+                margin: 0 20px;
+            }
+            
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                line-height: 40px;
+                text-decoration: none;
+                color: var(--app-secondary-color);
+            }
+            
+            .drawer-list a.iron-selected {
+                color: black;
+                font-weight: bold;
+            }
+            
+            .drawer-list a.subroute {
+                padding-left: 32px;
+            }
+            
+            .container {
+                width: 100%;
+                display: block;
+            }
+            
+            
+            .box_1,
+            .box_2 {
+                width: 100%;
+                height: 600px;
+                float: left;
+            }
+            
+            .box_image {
+                margin-top: 38px;
+            }
+            
+            .box_1 {
+                @apply(--layout-vertical);
+                @apply(--layout-center);
+                @apply(--layout-center-justified);
+                text-align: center;
+            }
+            
+            .box-text {
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+            
+            #box-a {
+                background-color: white;
+            }
+            
+            .dark-text {
+                color: #222;
+            }
+            
+            #box-b {
+                background-color: #55A041;
+            }
+            
+            #box-c {
+                background-color: #1A9FE8;
+            }
+            
+            #box-d {
+                background-image: url(../images/VRheadset-on-woman_105754465_WM.jpeg);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            
+            #box-e {
+                background-color: white;
+                height: 300px;
+            }
+            
+            #box-f {
+                background-image: url(../images/AdobeStock_95222613_WM.jpeg);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            
+            #box-g {
+                background-color: #222;
+            }
+            
+            #box-d h3,
+            #box-f h3 {
+                color: white;
+            }
+            
+            #box-d p,
+            #box-d p {
+                margin-bottom: 200px;
+            }
+            
+            @media (min-width:768px) {
+                app-drawer,
+                paper-icon-button {
+                    display: none;
+                }
+                app-toolbar {
+                    padding-left: 50px;
+                    padding-right: 50px;
+                }
+                .box_1 {
+                    width: 50%;
+                }
+                .box_1,
+                .box_2 {
+                    height: 800px;
+                }
+                .box-text {
+                    margin-left: 20%;
+                    margin-right: 20%;
+                }
+            }
+            
+            @media (min-width:1060px) {
+                .box-text {
+                    margin-left: 30%;
+                    margin-right: 30%;
+                }
+            }
+            
+            @media (max-width:768px) {
+                paper-tabs {
+                    display: none;
+                }
+            }
+    </style>
+
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'shared-styles'
+
+    });
+
+  </script>
+
+</dom-module>

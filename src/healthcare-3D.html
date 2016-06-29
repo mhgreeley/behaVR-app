@@ -1,0 +1,83 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Google Font-->
+<link href='https://fonts.googleapis.com/css?family=Poppins:300,500|Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
+
+<dom-module id="healthcare-3D">
+
+  <template>
+
+    <style>
+        
+        h2 {
+            color: #1A9FE8;
+            font-family: 'Nothing You Could Do', cursive;
+            font-size: 1.5em;
+        }
+        
+        div {
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+        
+        img {
+            height: 35px;
+            width: 35px;
+            padding-top: 15px;
+        }
+        
+        p {
+            color: #666;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            
+        }
+        
+        span {
+            font-weight:500;
+            font-size: 1.3em;
+            color: #1A9FE8;
+        }
+        
+        @media (min-width:1060px) {
+                div {
+                    margin-left: 25%;
+                    margin-right: 25%;
+                }
+            }
+
+    </style>
+
+    <div>
+            <p><span>Three out of four Americans will die prematurely from a condition mostly related to lifestyle or habit.</span></p>  
+            <p>Today, healthcare providers lack tools to deliver effective behavior change support to their patients.  But new technology is disrupting this problem.</p>
+            
+             <h2>We see the future of healthcare in 3D</h2>
+            <img src="../images/mini-logo.png" alt="behaVR logo">
+    </div>
+
+
+  </template>
+  
+ <script>
+
+    Polymer({
+
+      is: 'healthcare-3D'
+
+    });
+
+  </script>
+
+</dom-module>

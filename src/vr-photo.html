@@ -1,0 +1,71 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Google Font-->
+<link href='https://fonts.googleapis.com/css?family=Poppins:300,500|Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
+
+<dom-module id="vr-photo">
+
+  <template>
+
+    <style>
+        
+        h2 {
+            color: white;
+            font-family: 'Nothing You Could Do', cursive;
+            font-size: 1.5em;
+        }
+        
+        div {
+                margin-left: 50px;
+                margin-right: 50px;
+                margin-bottom: 300px;
+                margin-top: 50px;
+            }
+        
+        p {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            
+        }
+        
+        @media (min-width:1060px) {
+                div {
+                    margin-left: 25%;
+                    margin-right: 25%;
+                    margin-bottom: 450px;
+                }
+            
+            }
+
+    </style>
+
+    <div>
+            <h2>We empower physicians with technology</h2>
+            <p>BehaVR is making it easy for physicians to incorporate effective behavior change therapy into their patient's care plan and practice business model</p>
+    </div>
+
+
+  </template>
+  
+ <script>
+
+    Polymer({
+
+      is: 'vr-photo'
+
+    });
+
+  </script>
+
+</dom-module>
